@@ -1,6 +1,6 @@
 body {
     margin: auto;
-    width: 1024px;
+
 }
 
 .jumbotron {
@@ -9,13 +9,28 @@ body {
 .panel {
     background-color: #e9ecef;
     border-radius: .3rem;
-    height: 420px;
+    padding-top: 16px;
+    padding-bottom: 16px;
     margin: 0px 0px 32px;
 }
 
-.panel-thin {
+.playerImage {
+    height: 176px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.panel-table {
     background-color: #e9ecef;
+    height: 208px;
     border-radius: .3rem;
-    height: 200px;
+    padding-left: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
     margin: 0px 0px 32px;
+}
+
+table, th, td {
+    border: 1px solid black;
 }
