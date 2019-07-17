@@ -1,89 +1,101 @@
+window.onload = function () {
 
-var margin = {top: 50, right: 50, bottom: 50, left: 50}
-  , width = window.innerWidth - margin.left - margin.right 
-  , height = window.innerHeight - margin.top - margin.bottom;
-
-var n = 21;
-
-
-var xScale = d3.scaleLinear()
-    .domain([0, n-1]) 
-    .range([0, width]); 
-
-var yScale = d3.scaleLinear()
-    .domain([0, 1]) 
-    .range([height, 0]); 
-
-var line = d3.line()
-    .x(function(d, i) { return xScale(i); }) 
-    .y(function(d) { return yScale(d.y); })
-    .curve(d3.curveMonotoneX) 
-
-var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(1)() } })
-
-var svg = d3.select("#tableValue").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-// 3. Call the x axis in a group tag
-svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xScale)); // Create an axis component with d3.axisBottom
-
-// 4. Call the y axis in a group tag
-svg.append("g")
-    .attr("class", "y axis")
-    .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
-
-// 9. Append the path, bind the data, and call the line generator 
-svg.append("path")
-    .datum(dataset) // 10. Binds data to the line 
-    .attr("class", "line") // Assign a class for styling 
-    .attr("d", line); // 11. Calls the line generator 
-
-// 12. Appends a circle for each datapoint 
-svg.selectAll(".dot")
-    .data(dataset)
-  .enter().append("circle") // Uses the enter().append() method
-    .attr("class", "dot") // Assign a class for styling
-    .attr("cx", function(d, i) { return xScale(i) })
-    .attr("cy", function(d) { return yScale(d.y) })
-    .attr("r", 5)
-      .on("mouseover", function(a, b, c) { 
-  			console.log(a) 
-        this.attr('class', 'focus')
-		})
-      .on("mouseout", function() {  })
-      .on("mousemove", mousemove);
-
-   var focus = svg.append("g")
-       .attr("class", "focus")
-       .style("display", "none");
-
-   focus.append("circle")
-       .attr("r", 4.5);
-
-   focus.append("text")
-       .attr("x", 9)
-       .attr("dy", ".35em");
-
-   svg.append("rect")
-       .attr("class", "overlay")
-       .attr("width", width)
-       .attr("height", height)
-       .on("mouseover", function() { focus.style("display", null); })
-       .on("mouseout", function() { focus.style("display", "none"); })
-       .on("mousemove", mousemove);
-
-   function mousemove() {
-     var x0 = x.invert(d3.mouse(this)[0]),
-         i = bisectDate(data, x0, 1),
-         d0 = data[i - 1],
-         d1 = data[i],
-         d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-     focus.attr("transform", "translate(" + x(d.date) + "," + y(d.close) + ")");
-     focus.select("text").text(d);
-   }
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        title:{
+            text: "your mom",
+            fontFamily: "arial black",
+            fontColor: "#695A42"
+        },
+        axisX: {
+            interval: 1,
+            intervalType: "year"
+        },
+        axisY:{
+            valueFormatString:"",
+            gridColor: "#B6B1A8",
+            tickColor: "#B6B1A8"
+        },
+        toolTip: {
+            shared: true,
+            content: toolTipContent
+        },
+        data: [{
+            type: "stackedColumn",
+            showInLegend: true,
+            color: "#696661",
+            name: "Lebron James",
+            dataPoints: [
+                { y: 45, x: new Date(2010,0) },
+                { y: 3, x: new Date(2011,0) },
+                { y: 22, x: new Date(2012,0) },
+                { y: 17, x: new Date(2013,0) },
+                { y: 4, x: new Date(2014,0) },
+                { y: 6, x: new Date(2015,0) },
+                { y: 9, x: new Date(2016,0) }
+            ]
+            },
+            {        
+                type: "stackedColumn",
+                showInLegend: true,
+                name: "Dwayne Wade",
+                color: "#EDCA93",
+                dataPoints: [
+                    { y: 6.82, x: new Date(2010,0) },
+                    { y: 9.02, x: new Date(2011,0) },
+                    { y: 11.80, x: new Date(2012,0) },
+                    { y: 14.11, x: new Date(2013,0) },
+                    { y: 15.96, x: new Date(2014,0) },
+                    { y: 17.73, x: new Date(2015,0) },
+                    { y: 21.5, x: new Date(2016,0) }
+                ]
+            },
+            {        
+                type: "stackedColumn",
+                showInLegend: true,
+                name: "Kawhi Leonard",
+                color: "#695A42",
+                dataPoints: [
+                    { y: 7.28, x: new Date(2010,0) },
+                    { y: 9.72, x: new Date(2011,0) },
+                    { y: 13.30, x: new Date(2012,0) },
+                    { y: 14.9, x: new Date(2013,0) },
+                    { y: 18.10, x: new Date(2014,0) },
+                    { y: 18.68, x: new Date(2015,0) },
+                    { y: 22.45, x: new Date(2016,0) }
+                ]
+            },
+            {        
+                type: "stackedColumn",
+                showInLegend: true,
+                name: "Steph Curry",
+                color: "#B6B1A8",
+                dataPoints: [
+                    { y: 8.44, x: new Date(2010,0) },
+                    { y: 10.58, x: new Date(2011,0) },
+                    { y: 14.41, x: new Date(2012,0) },
+                    { y: 16.86, x: new Date(2013,0) },
+                    { y: 10.64, x: new Date(2014,0) },
+                    { y: 21.32, x: new Date(2015,0) },
+                    { y: 26.06, x: new Date(2016,0) },                   { y: 26.06, x: new Date(2017,0) }
+                ]
+        }]
+    });
+    chart.render();
+    
+    function toolTipContent(e) {
+        var str = "";
+        var total = 0;
+        var str2, str3;
+        for (var i = 0; i < e.entries.length; i++){
+            var  str1 = "<span style= \"color:"+e.entries[i].dataSeries.color + "\"> "+e.entries[i].dataSeries.name+"</span>: $<strong>"+e.entries[i].dataPoint.y+"</strong>bn<br/>";
+            total = e.entries[i].dataPoint.y + total;
+            str = str.concat(str1);
+        }
+        str2 = "<span style = \"color:DodgerBlue;\"><strong>"+(e.entries[0].dataPoint.x).getFullYear()+"</strong></span><br/>";
+        total = Math.round(total * 100) / 100;
+        str3 = "<span style = \"color:Tomato\">Total:</span><strong> $"+total+"</strong>bn<br/>";
+        return (str2.concat(str)).concat(str3);
+    }
+    
+    }
