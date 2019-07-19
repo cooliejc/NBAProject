@@ -106,25 +106,27 @@ $("#find-player").on("click", function(event) {
         //playerView.append(`<div class=${newName}>${JSON.stringify(foundPlayerData)}</div>`);
         //$('#playerName').text(JSON.stringify(foundPlayerData.name).replace(/['"]+/g, ''));
         //$('#playerTeam').text(JSON.stringify(foundPlayerData.team_name).replace(/['"]+/g, ''));
-
-         //BEGIN DOM HACKERY
-
-        //DIV STRUCTURE
         
+        $('#player-input').val("");
+
+        //BEGIN DOM HACKERY
+        //DIV STRUCTURE
         var rightColumn = $('<div>');
         rightColumn.addClass('panel-table');
 
         var leftColumn = $('<div>');
-        leftColumn.addClass('panel');
+        // leftColumn.addClass('panel-table');
 
         //PLAYER NAME
         var playerCardName = $('<h1>');
         playerCardName.addClass('display-5');
+        playerCardName.addClass('playerInfo');
         playerCardName.text(JSON.stringify(foundPlayerData.name).replace(/['"]+/g, ''));
 
 
         //PLAYER TEAM
         var playerCardTeam = $('<p>');
+        playerCardTeam.addClass('playerInfo')
         playerCardTeam.text(JSON.stringify(foundPlayerData.team_name).replace(/['"]+/g, ''));
 
 
@@ -146,21 +148,21 @@ $("#find-player").on("click", function(event) {
         var fieldGoalsAttemptedCat = $('<td>');
         fieldGoalsAttemptedCat.text('FGA');
         var fieldGoalsPercentCat = $('<td>');
-        fieldGoalsPercentCat.text('FGPCT');
+        fieldGoalsPercentCat.text('FGP');
         var threePointMadeCat = $('<td>');
-        threePointMadeCat.text('FG3M');
+        threePointMadeCat.text('3PM');
         var threePointAttemptedCat = $('<td>');
-        threePointAttemptedCat.text('FG3A');
+        threePointAttemptedCat.text('3PA');
         var threePointPercentCat = $('<td>');
-        threePointPercentCat.text('FG3PCT');
+        threePointPercentCat.text('3PP');
         var freeThrowsPercentCat = $('<td>');
-        freeThrowsPercentCat.text('FTPCT');
+        freeThrowsPercentCat.text('FTP');
         var offesensiveReboundsCat = $('<td>');
-        offesensiveReboundsCat.text('OREB');
+        offesensiveReboundsCat.text('ORB');
         var defensiveReboundsCat = $('<td>');
-        defensiveReboundsCat.text('DREB');
+        defensiveReboundsCat.text('DRB');
         var reboundsCat = $('<td>');
-        reboundsCat.text('REB');
+        reboundsCat.text('RB');
         var assistsCat = $('<td>');
         assistsCat.text('AST');
         var stealsCat = $('<td>');
@@ -172,6 +174,7 @@ $("#find-player").on("click", function(event) {
         var playerEfficiencyCat = $('<td>');
         playerEfficiencyCat.text('PE');
         var pointsCat = $('<td>');
+        pointsCat.addClass('finalEntry');
         pointsCat.text('PTS');
 
         tableCategories.append(gamesPlayedCat, minutesPlayedCat, fieldGoalsMadeCat, fieldGoalsAttemptedCat, fieldGoalsPercentCat, threePointMadeCat, threePointAttemptedCat, threePointPercentCat, freeThrowsPercentCat, offesensiveReboundsCat, defensiveReboundsCat, reboundsCat, assistsCat, stealsCat, blocksCat, turnoversCat, playerEfficiencyCat, pointsCat);
@@ -219,6 +222,7 @@ $("#find-player").on("click", function(event) {
         var playerEfficiencyStat = $('<td>');
         playerEfficiencyStat.text(JSON.stringify(foundPlayerData.player_efficiency_rating).replace(/['"]+/g, ''));
         var pointsStat = $('<td>');
+        pointsStat.addClass('finalEntry');
         pointsStat.text(JSON.stringify(foundPlayerData.points_per_game).replace(/['"]+/g, ''));
 
         tableStats.append(gamesPlayedStat, minutesPlayedStat, fieldGoalsMadeStat, fieldGoalsAttemptedStat, fieldGoalsPercentStat, threePointMadeStat, threePointAttemptedStat, threePointPercentStat, freeThrowsPercentStat, offesensiveReboundsStat, defensiveReboundsStat, reboundsStat, assistsStat, stealsStat, blocksStat, turnoversStat, playerEfficiencyStat, pointsStat);
@@ -235,8 +239,6 @@ $("#find-player").on("click", function(event) {
         $('#statColumn').append(rightColumn);
 
 
-
-        //THIS CODE REMOVED FROM IF/ELSE BECAUSE I BROKE IT SOMEHOW
         var playerName = name;
 
         console.log(name);
@@ -260,10 +262,13 @@ $("#find-player").on("click", function(event) {
         //playerCardImage.attr('src', 'https://nba-players.herokuapp.com/players' + completeName);
         //playerImage.appendTo('#player-images');
 
+        //ADD BUTTONS TO REMOVE ADDED PLAYERS
         var addButton = $("<button>");
         addButton.addClass(`${newName}`);
         addButton.addClass("btn");
-        addButton.text(playerName);
+        addButton.addClass('btn-light');
+        addButton.attr('href', '#');
+        addButton.text('X ' + playerName);
         $("#buttonArea").append(addButton);
       
       
