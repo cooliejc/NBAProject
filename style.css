@@ -34,3 +34,29 @@ body {
 table, th, td {
     border: 1px solid black;
 }
+
+
+
+.line {
+    fill: none;
+    stroke: #75076c;
+    stroke-width: 3;
+}
+  
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+​
+
+
+.dot {
+    fill: #5f5f5f;
+    stroke: rgb(155, 33, 33);
+}
+
+.focus circle {
+  fill: none;
+  stroke: rgb(255, 11, 202);
+}
+​
