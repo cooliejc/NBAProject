@@ -1,3 +1,16 @@
+// var player = $('<div>');
+// player.addClass('panel-table');
+// var playerName = $('<h1>');
+// playerName.addClass('display-5');
+// playerName.text(JSON.stringify(foundPlayerData.name));
+// player.append(playerName);
+
+
+
+// var playerTable = $('<tr>');
+// playerTable.attr('id', 'categories');
+
+
 $("#find-player").on("click", function(event) {
     $.ajax({
       url: "https://nba-players.herokuapp.com/players-stats",
@@ -38,7 +51,9 @@ $("#find-player").on("click", function(event) {
              return false;    
       }
       else { 
-      playerView.append(`<div class=${newName}>${JSON.stringify(foundPlayerData)}</div>`);
+        //playerView.append(`<div class=${newName}>${JSON.stringify(foundPlayerData)}</div>`);
+        $('#playerName').text(JSON.stringify(foundPlayerData.name).replace(/['"]+/g, ''));
+        $('#playerTeam').text(JSON.stringify(foundPlayerData.team_name).replace(/['"]+/g, ''));
           var playerName = name;
   
           console.log(name);
@@ -58,9 +73,9 @@ $("#find-player").on("click", function(event) {
           var completeName = lastNamea + firstNamea;
           console.log(completeName);
   
-          var playerImage = $(`<img class=${newName}>`);
+          let playerImage = $(`#playerImage`);
           playerImage.attr('src', 'https://nba-players.herokuapp.com/players' + completeName);
-          playerImage.appendTo('#player-images');
+          //playerImage.appendTo('#player-images');
   
           var addButton = $("<button>");
       addButton.addClass(`${newName}`);
