@@ -2,23 +2,24 @@ window.onload = function () {
 
     var chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
+        dataPointWidthMax: 20,
+        dataPointWidthMin: 5,
+        labelWrap: true,
+
         title:{
-            text: "your mom",
+            text: "",
             fontFamily: "arial black",
             fontColor: "#695A42"
         },
         axisX: {
-            interval: 1,
-            intervalType: "year"
+            labelWrap: true,
+            labelAutoFit: true,
         },
         axisY:{
-            valueFormatString:"",
-            gridColor: "#B6B1A8",
-            tickColor: "#B6B1A8"
         },
         toolTip: {
             shared: true,
-            content: toolTipContent
+            content: "<br/>{name}: <strong>{y}</strong>mn Units"
         },
         data: [{
             type: "stackedColumn",
@@ -26,13 +27,25 @@ window.onload = function () {
             color: "#696661",
             name: "Lebron James",
             dataPoints: [
-                { y: 45, x: new Date(2010,0) },
-                { y: 3, x: new Date(2011,0) },
-                { y: 22, x: new Date(2012,0) },
-                { y: 17, x: new Date(2013,0) },
-                { y: 4, x: new Date(2014,0) },
-                { y: 6, x: new Date(2015,0) },
-                { y: 9, x: new Date(2016,0) }
+                { y: 45, label: 'GP' },
+                { y: 3, label: 'MIN' },
+                { y: 22, label: 'FGM' },
+                { y: 17, label: 'FGA' },
+                { y: 4, label: 'FGPCT' },
+                { y: 6, label: 'FG3M' },
+                { y: 9, label: 'FTM' },
+                { y: 2, label: 'FTA'},
+                { y: 4, label: 'FTPCT'},
+                { y: 10, label: 'OREB'},
+                { y: 20, label: 'DREB'},
+                { y: 3, label: 'REB'},
+                { y: 5, label: 'AST'},
+                { y: 19, label: 'STL'},
+                { y: 4, label: 'BLK'},
+                { y: 6, label: 'TO'},
+                { y: 8, label: 'PF'},
+                { y: 12, label: 'PT'},
+
             ]
             },
             {        
@@ -41,13 +54,24 @@ window.onload = function () {
                 name: "Dwayne Wade",
                 color: "#EDCA93",
                 dataPoints: [
-                    { y: 6.82, x: new Date(2010,0) },
-                    { y: 9.02, x: new Date(2011,0) },
-                    { y: 11.80, x: new Date(2012,0) },
-                    { y: 14.11, x: new Date(2013,0) },
-                    { y: 15.96, x: new Date(2014,0) },
-                    { y: 17.73, x: new Date(2015,0) },
-                    { y: 21.5, x: new Date(2016,0) }
+                    { y: 45, label: 'GP' },
+                    { y: 3, label: 'MIN' },
+                    { y: 22, label: 'FGM' },
+                    { y: 17, label: 'FGA' },
+                    { y: 4, label: 'FGPCT' },
+                    { y: 6, label: 'FG3M' },
+                    { y: 9, label: 'FTM' },
+                    { y: 2, label: 'FTA'},
+                    { y: 4, label: 'FTPCT'},
+                    { y: 10, label: 'OREB'},
+                    { y: 20, label: 'DREB'},
+                    { y: 3, label: 'REB'},
+                    { y: 5, label: 'AST'},
+                    { y: 19, label: 'STL'},
+                    { y: 4, label: 'BLK'},
+                    { y: 6, label: 'TO'},
+                    { y: 8, label: 'PF'},
+                    { y: 12, label: 'PT'},
                 ]
             },
             {        
@@ -56,13 +80,24 @@ window.onload = function () {
                 name: "Kawhi Leonard",
                 color: "#695A42",
                 dataPoints: [
-                    { y: 7.28, x: new Date(2010,0) },
-                    { y: 9.72, x: new Date(2011,0) },
-                    { y: 13.30, x: new Date(2012,0) },
-                    { y: 14.9, x: new Date(2013,0) },
-                    { y: 18.10, x: new Date(2014,0) },
-                    { y: 18.68, x: new Date(2015,0) },
-                    { y: 22.45, x: new Date(2016,0) }
+                    { y: 45, label: 'GP' },
+                { y: 3, label: 'MIN' },
+                { y: 22, label: 'FGM' },
+                { y: 17, label: 'FGA' },
+                { y: 4, label: 'FGPCT' },
+                { y: 6, label: 'FG3M' },
+                { y: 9, label: 'FTM' },
+                { y: 2, label: 'FTA'},
+                { y: 4, label: 'FTPCT'},
+                { y: 10, label: 'OREB'},
+                { y: 20, label: 'DREB'},
+                { y: 3, label: 'REB'},
+                { y: 5, label: 'AST'},
+                { y: 19, label: 'STL'},
+                { y: 4, label: 'BLK'},
+                { y: 6, label: 'TO'},
+                { y: 8, label: 'PF'},
+                { y: 12, label: 'PT'},
                 ]
             },
             {        
@@ -71,31 +106,43 @@ window.onload = function () {
                 name: "Steph Curry",
                 color: "#B6B1A8",
                 dataPoints: [
-                    { y: 8.44, x: new Date(2010,0) },
-                    { y: 10.58, x: new Date(2011,0) },
-                    { y: 14.41, x: new Date(2012,0) },
-                    { y: 16.86, x: new Date(2013,0) },
-                    { y: 10.64, x: new Date(2014,0) },
-                    { y: 21.32, x: new Date(2015,0) },
-                    { y: 26.06, x: new Date(2016,0) },                   { y: 26.06, x: new Date(2017,0) }
+                    { y: 45, label: 'GP' },
+                { y: 3, label: 'MIN' },
+                { y: 22, label: 'FGM' },
+                { y: 17, label: 'FGA' },
+                { y: 4, label: 'FGPCT' },
+                { y: 6, label: 'FG3M' },
+                { y: 9, label: 'FTM' },
+                { y: 2, label: 'FTA'},
+                { y: 4, label: 'FTPCT'},
+                { y: 10, label: 'OREB'},
+                { y: 20, label: 'DREB'},
+                { y: 3, label: 'REB'},
+                { y: 5, label: 'AST'},
+                { y: 19, label: 'STL'},
+                { y: 4, label: 'BLK'},
+                { y: 6, label: 'TO'},
+                { y: 8, label: 'PF'},
+                { y: 12, label: 'PT'},
                 ]
         }]
     });
     chart.render();
     
-    function toolTipContent(e) {
-        var str = "";
-        var total = 0;
-        var str2, str3;
-        for (var i = 0; i < e.entries.length; i++){
-            var  str1 = "<span style= \"color:"+e.entries[i].dataSeries.color + "\"> "+e.entries[i].dataSeries.name+"</span>: $<strong>"+e.entries[i].dataPoint.y+"</strong>bn<br/>";
-            total = e.entries[i].dataPoint.y + total;
-            str = str.concat(str1);
-        }
-        str2 = "<span style = \"color:DodgerBlue;\"><strong>"+(e.entries[0].dataPoint.x).getFullYear()+"</strong></span><br/>";
-        total = Math.round(total * 100) / 100;
-        str3 = "<span style = \"color:Tomato\">Total:</span><strong> $"+total+"</strong>bn<br/>";
-        return (str2.concat(str)).concat(str3);
-    }
+    //orginal function for data mouse over window
+    // function toolTipContent(e) {
+    //     var str = "";
+    //     var total = 0;
+    //     var str2, str3;
+    //     for (var i = 0; i < e.entries.length; i++){
+    //         var  str1 = "<span style= \"color:"+e.entries[i].dataSeries.color + "\"> "+e.entries[i].dataSeries.name+"</span>: $<strong>"+e.entries[i].dataPoint.y+"</strong>bn<br/>";
+    //         total = e.entries[i].dataPoint.y + total;
+    //         str = str.concat(str1);
+    //     }
+    //     str2 = "<span style = \"color:DodgerBlue;\"><strong>"+(e.entries[0].dataPoint.x).label()+"</strong></span><br/>";
+    //     total = Math.round(total * 100) / 100;
+    //     str3 = "<span style = \"color:Tomato\">Total:</span><strong> $"+total+"</strong>bn<br/>";
+    //     return (str2.concat(str)).concat(str3);
+    // }
     
     }
