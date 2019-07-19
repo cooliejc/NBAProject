@@ -223,7 +223,28 @@ $("#find-player").on("click", function(event) {
       
       addButton.on('click', function(){ $('.' + newName).remove(); });
           }
-      
-      
-      });
-  });
+           // News section function
+           var newsBox = $(`<div class=${newName}></div>`);
+           var newsUrl = 'https://newsapi.org/v2/everything?' +
+               'q=' + newName + '&' + 'pageSize=5&' +
+               'sortBy=popularity&' +
+               'apiKey=04246e4aed574328b298927d89b9985a';
+     
+           $.ajax({
+               url: newsUrl,
+               method: "GET"
+               }).done(function(response) {
+               console.log('this is the repsonse');
+               console.log(response);
+               newsBox.html('');
+                   $.each(response.articles, function(index, element) {
+                       var date = new Date(element.publishedAt).toISOString().slice(0,10);
+                       var author = element.author ? element.author : ' ';
+                       var li = '<li><h3><a href="'+element.url+'" target="_blank">'+element.title+'</a></h3><span class="date">'+date+'</span><span class="author">'+author+'</span><p>'+element.description+'</p><img src="'+element.urlToImage+'" /></li>'
+                       newsBox.append(li);
+                       $('#news-section').append(newsBox);
+                   });
+                });
+            });
+    });
+  
