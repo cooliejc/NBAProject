@@ -27,7 +27,6 @@ var chart = new CanvasJS.Chart("chartContainer", {
         color: "#696661",
         name: '#newName',
         dataPoints: [
-            //{"name":"LeBron James","team_acronym":"cle","team_name":"Cleveland Cavaliers","games_played":"46","minutes_per_game":"36:54","field_goals_attempted_per_game":"18.7","field_goals_made_per_game":"10.3","field_goal_percentage":"54.9","free_throw_percentage":"74.5","three_point_attempted_per_game":"4.9","three_point_made_per_game":"1.8","three_point_percentage":"36.2","points_per_game":"26.8","offensive_rebounds_per_game":"1.2","defensive_rebounds_per_game":"6.7","rebounds_per_game":"7.9","assists_per_game":"8.6","steals_per_game":"1.6","blocks_per_game":"1.1","turnovers_per_game":"4.3","player_efficiency_rating":"1.7"}
             { y: 0, label: 'GP', id:"Games Played" },
             { y: 0, label: 'MIN', id:"Minutes"  },
             { y: 0, label: 'FGM', id:"Field Goals Made"  },
@@ -123,9 +122,8 @@ $("#find-player").on("click", function (event) {
                     color: "#696661",
                     name: foundPlayerData.name,
                     dataPoints: [
-                        //{"name":"LeBron James","team_acronym":"cle","team_name":"Cleveland Cavaliers",1"games_played":"46",2"minutes_per_game":"36:54",3"field_goals_attempted_per_game":"18.7",4"field_goals_made_per_game":"10.3",5"field_goal_percentage":"54.9",6"free_throw_percentage":"74.5",7"three_point_attempted_per_game":"4.9",8"three_point_made_per_game":"1.8","three_point_percentage":"36.2","points_per_game":"26.8","offensive_rebounds_per_game":"1.2","defensive_rebounds_per_game":"6.7","rebounds_per_game":"7.9","assists_per_game":"8.6","steals_per_game":"1.6","blocks_per_game":"1.1","turnovers_per_game":"4.3","player_efficiency_rating":"1.7"}
+                     
 
-                        //console.log(foundPlayerData.assists_per_game, "assist");
 
                         { y: parseInt(foundPlayerData.games_played), label: 'GP', id:"Games Played" },
                         { y: parseInt(foundPlayerData.minutes_per_game), label: 'MIN', id:"Minutes"  },
