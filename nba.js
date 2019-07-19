@@ -15,7 +15,6 @@ $("#find-player").on("click", function(event) {
         
         // Stops the function and returns playerData value from the corresponding name value of our array
             return playerData.name.toLowerCase() === name.toLowerCase();
-            
         });
         
         console.log(`The player you have serached for is ${name}`);
@@ -25,6 +24,9 @@ $("#find-player").on("click", function(event) {
         //BEGIN DOM HACKERY
 
         //DIV STRUCTURE
+        
+        var rightColumn = $('<div>');
+        rightColumn.addClass('panel-table');
 
         var leftColumn = $('<div>');
         leftColumn.addClass('panel');
@@ -34,14 +36,16 @@ $("#find-player").on("click", function(event) {
         playerCardName.addClass('display-5');
         playerCardName.text(JSON.stringify(foundPlayerData.name).replace(/['"]+/g, ''));
 
+
         //PLAYER TEAM
         var playerCardTeam = $('<p>');
-        playerCardTeam.text(JSON.stringify(foundPlayerData.team_name).replace(/['"]+/g, ''))
+        playerCardTeam.text(JSON.stringify(foundPlayerData.team_name).replace(/['"]+/g, ''));
 
-        // TABLE MAIN
+
+        // TABLE
         var table = $('<table>');
-
         var tableBody = $('<tbody>');
+
 
         // TABLE CATEGORIES
         var tableCategories = $('<tr>');
@@ -87,6 +91,7 @@ $("#find-player").on("click", function(event) {
         tableCategories.append(gamesPlayedCat, minutesPlayedCat, fieldGoalsMadeCat, fieldGoalsAttemptedCat, fieldGoalsPercentCat, threePointMadeCat, threePointAttemptedCat, threePointPercentCat, freeThrowsPercentCat, offesensiveReboundsCat, defensiveReboundsCat, reboundsCat, assistsCat, stealsCat, blocksCat, turnoversCat, playerEfficiencyCat, pointsCat);
 
         tableBody.append(tableCategories);
+
 
         //TABLE STATS
 
@@ -136,32 +141,18 @@ $("#find-player").on("click", function(event) {
 
         table.append(tableBody);
 
-        //APPEND PLAYERCARD DATA TO PLAYERCARD DIV
-        $('#playerCard').append(playerCardName);
-        $('#playerCard').append(playerCardTeam);
-        $('#playerCard').append(table);
+
+        //APPEND PLAYERCARD DATA TO RIGHTCOLUMN DIV
+        rightColumn.append(playerCardName);
+        rightColumn.append(playerCardTeam);
+        rightColumn.append(table);
+        $('#statColumn').append(rightColumn);
 
 
-      let newName = foundPlayerData.name.replace(' ', '-');
-      console.log(newName);
-  
-          if (!foundPlayerData) {
-      console.log('The player you searched for is not here')
-          return false; 
-      }
-      // playerView will be equal to our table div
-      let playerView = $("#player-view");
-      // This appends our playerView with a new div that's equal to the searched name and populates it 
-      // with the array's data
-      
-          if ($('.' + newName).length) {
-             return false;    
-      }
-      else { 
-        //playerView.append(`<div class=${newName}>${JSON.stringify(foundPlayerData)}</div>`);
-        $('#playerName').text(JSON.stringify(foundPlayerData.name).replace(/['"]+/g, ''));
-        $('#playerTeam').text(JSON.stringify(foundPlayerData.team_name).replace(/['"]+/g, ''));
-        
+        let newName = foundPlayerData.name.replace(' ', '-');
+        console.log(newName);
+
+        //THIS CODE REMOVED FROM IF/ELSE BECAUSE I BROKE IT SOMEHOW
         var playerName = name;
 
         console.log(name);
@@ -180,18 +171,11 @@ $("#find-player").on("click", function(event) {
 
         var completeName = lastNamea + firstNamea;
         console.log(completeName);
-        
-        //PLAYER IMAGE DOM
-        var playerCardImage = $('<img>');
-        playerCardImage.addClass('playerImage', 'rounded');
-        playerCardImage.attr('src', 'https://nba-players.herokuapp.com/players' + completeName);
-        leftColumn.append(playerCardImage);
-        $('#imageColumn').append(leftColumn);
 
         //let playerImage = $(`#playerImage`);
-        //playerImage.attr('src', 'https://nba-players.herokuapp.com/players' + completeName);
+        //playerCardImage.attr('src', 'https://nba-players.herokuapp.com/players' + completeName);
         //playerImage.appendTo('#player-images');
-  
+
         var addButton = $("<button>");
         addButton.addClass(`${newName}`);
         addButton.addClass("btn");
@@ -199,10 +183,46 @@ $("#find-player").on("click", function(event) {
         $("#buttonArea").append(addButton);
       
       
-      addButton.on('click', function(){ $('.' + newName).remove(); });
-          }
+        addButton.on('click', function(){ $('.' + newName).remove(); });
+
+        //PLAYER IMAGE DOM
+        var playerCardImage = $('<img>');
+        playerCardImage.addClass('playerImage');
+        playerCardImage.attr('src', 'https://nba-players.herokuapp.com/players' + completeName);
+        leftColumn.append(playerCardImage);
+        $('#imageColumn').append(leftColumn);
+        console.log(leftColumn);
+
+        if (!foundPlayerData) {
+            console.log('The player you searched for is not here');
+            return false; 
+        };
+
+        // playerView will be equal to our table div
+        let playerView = $("#player-view");
+        // This appends our playerView with a new div that's equal to the searched name and populates it 
+        // with the array's data
+        
+        //ADD .newName CLASS TO PARENT DIVS SO THEY CAN BE DELETED LATER
+        rightColumn.addClass(newName);
+        leftColumn.addClass(newName);
+
+        if ($('.' + newName).length) {
+             return false;    
+        } else { 
+        //playerView.append(`<div class=${newName}>${JSON.stringify(foundPlayerData)}</div>`);
+        //$('#playerName').text(JSON.stringify(foundPlayerData.name).replace(/['"]+/g, ''));
+        //$('#playerTeam').text(JSON.stringify(foundPlayerData.team_name).replace(/['"]+/g, ''));
+        
+       console.log("newName if/else fail")
+
+
+        }
+
+
+
       
       
-      });
-  });
+    });
+});
   
