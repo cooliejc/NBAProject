@@ -51,7 +51,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
     ]
 });
 chart.render();
-
+};
 //Darioush's work
 
 
@@ -272,6 +272,7 @@ $("#find-player").on("click", function(event) {
         //PLAYER IMAGE DOM
         var playerCardImage = $('<img>');
         playerCardImage.addClass('playerImage');
+        playerCardImage.addClass('rounded');
         playerCardImage.attr('src', 'https://nba-players.herokuapp.com/players' + completeName);
         leftColumn.append(playerCardImage);
         $('#imageColumn').append(leftColumn);
