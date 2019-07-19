@@ -1,6 +1,6 @@
 body {
     margin: auto;
-
+    width: 1130px;
 }
 
 .jumbotron {
@@ -36,7 +36,10 @@ table, th, td {
     border: 1px solid black;
 }
 
-
+#nba {
+    height: 120px;
+    float: left;
+}
 
 .line {
     fill: none;
@@ -49,8 +52,6 @@ table, th, td {
   pointer-events: all;
 }
 ​
-
-
 .dot {
     fill: #5f5f5f;
     stroke: rgb(155, 33, 33);
