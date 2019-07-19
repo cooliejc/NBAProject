@@ -21,7 +21,18 @@ $("#find-player").on("click", function(event) {
         console.log('This was the data I found');
         console.log(foundPlayerData);
       
-        //BEGIN DOM HACKERY
+
+        let newName = foundPlayerData.name.replace(' ', '-');
+        console.log(newName);
+       
+        if ($('.' + newName).length) {
+             return false;    
+        } else { 
+        //playerView.append(`<div class=${newName}>${JSON.stringify(foundPlayerData)}</div>`);
+        //$('#playerName').text(JSON.stringify(foundPlayerData.name).replace(/['"]+/g, ''));
+        //$('#playerTeam').text(JSON.stringify(foundPlayerData.team_name).replace(/['"]+/g, ''));
+
+         //BEGIN DOM HACKERY
 
         //DIV STRUCTURE
         
@@ -149,8 +160,6 @@ $("#find-player").on("click", function(event) {
         $('#statColumn').append(rightColumn);
 
 
-        let newName = foundPlayerData.name.replace(' ', '-');
-        console.log(newName);
 
         //THIS CODE REMOVED FROM IF/ELSE BECAUSE I BROKE IT SOMEHOW
         var playerName = name;
@@ -207,12 +216,6 @@ $("#find-player").on("click", function(event) {
         rightColumn.addClass(newName);
         leftColumn.addClass(newName);
 
-        if ($('.' + newName).length) {
-             return false;    
-        } else { 
-        //playerView.append(`<div class=${newName}>${JSON.stringify(foundPlayerData)}</div>`);
-        //$('#playerName').text(JSON.stringify(foundPlayerData.name).replace(/['"]+/g, ''));
-        //$('#playerTeam').text(JSON.stringify(foundPlayerData.team_name).replace(/['"]+/g, ''));
         
        console.log("newName if/else fail")
 
