@@ -1,136 +1,60 @@
+window.onload = function () {
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    dataPointWidthMax: 20,
+    dataPointWidthMin: 5,
+    labelWrap: true,
+
+    title: {
+        text: "",
+        fontFamily: "arial black",
+        fontColor: "#695A42"
+    },
+    axisX: {
+        labelWrap: true,
+        labelAutoFit: true,
+    },
+    axisY: {
+    },
+    toolTip: {
+        shared: true,
+        content: "{id}"
+    },
+    
+    data: [{
+        type: "stackedColumn",
+        showInLegend: true,
+        color: "#696661",
+        name: '#newName',
+        dataPoints: [
+            { y: 0, label: 'GP', id:"Games Played" },
+            { y: 0, label: 'MIN', id:"Minutes"  },
+            { y: 0, label: 'FGM', id:"Field Goals Made"  },
+            { y: 0, label: 'FGA', id:"Field Goals Attempted" },
+            { y: 0, label: 'FGPCT', id:"Field Goal Percentage" },
+            { y: 0, label: 'FG3M', id:'3Pt Field Goal Made' },
+            { y: 0, label: 'FT%', id:'Free Throw Percentage' },
+            { y: 0, label: 'PPG', id:"Points Per Game" },
+            { y: 0, label: 'OREB', id: "Offensive Rebounds Per Game"},
+            { y: 0, label: 'DREB', id: "Defensive Rebounds Per Game" },
+            { y: 0, label: 'REB', id:"Rebounds Per Game" },
+            { y: 0, label: 'AST', id:"Assists" },
+            { y: 0, label: 'STL', id:"Steals" },
+            { y: 0, label: 'BLK', id:"Blocks" },
+            { y: 0, label: 'TO', id:"TurnOvers" },
+            { y: 0, label: 'PER', id:"PLayer Effeciancy Rating" },
+
+        ]
+    },
+    
+    
+    ]
+});
+chart.render();
+
 //Darioush's work
 
-window.onload = function () {
 
-    var chart = new CanvasJS.Chart("chartContainer", {
-        animationEnabled: true,
-        dataPointWidthMax: 20,
-        dataPointWidthMin: 5,
-        labelWrap: true,
-
-        title:{
-            text: "",
-            fontFamily: "arial black",
-            fontColor: "#695A42"
-        },
-        axisX: {
-            labelWrap: true,
-            labelAutoFit: true,
-        },
-        axisY:{
-        },
-        toolTip: {
-            shared: true,
-            content: "<br/>{name}: <strong>{y}</strong>mn Units"
-        },
-        data: [{
-            type: "stackedColumn",
-            showInLegend: true,
-            color: "#696661",
-            name: "Lebron James",
-            dataPoints: [
-                { y: 45, label: 'GP' },
-                { y: 3, label: 'MIN' },
-                { y: 22, label: 'FGM' },
-                { y: 17, label: 'FGA' },
-                { y: 4, label: 'FGPCT' },
-                { y: 6, label: 'FG3M' },
-                { y: 9, label: 'FTM' },
-                { y: 2, label: 'FTA'},
-                { y: 4, label: 'FTPCT'},
-                { y: 10, label: 'OREB'},
-                { y: 20, label: 'DREB'},
-                { y: 3, label: 'REB'},
-                { y: 5, label: 'AST'},
-                { y: 19, label: 'STL'},
-                { y: 4, label: 'BLK'},
-                { y: 6, label: 'TO'},
-                { y: 8, label: 'PF'},
-                { y: 12, label: 'PT'},
-
-            ]
-            },
-            {        
-                type: "stackedColumn",
-                showInLegend: true,
-                name: "Dwayne Wade",
-                color: "#EDCA93",
-                dataPoints: [
-                    { y: 45, label: 'GP' },
-                    { y: 3, label: 'MIN' },
-                    { y: 22, label: 'FGM' },
-                    { y: 17, label: 'FGA' },
-                    { y: 4, label: 'FGPCT' },
-                    { y: 6, label: 'FG3M' },
-                    { y: 9, label: 'FTM' },
-                    { y: 2, label: 'FTA'},
-                    { y: 4, label: 'FTPCT'},
-                    { y: 10, label: 'OREB'},
-                    { y: 20, label: 'DREB'},
-                    { y: 3, label: 'REB'},
-                    { y: 5, label: 'AST'},
-                    { y: 19, label: 'STL'},
-                    { y: 4, label: 'BLK'},
-                    { y: 6, label: 'TO'},
-                    { y: 8, label: 'PF'},
-                    { y: 12, label: 'PT'},
-                ]
-            },
-            {        
-                type: "stackedColumn",
-                showInLegend: true,
-                name: "Kawhi Leonard",
-                color: "#695A42",
-                dataPoints: [
-                    { y: 45, label: 'GP' },
-                { y: 3, label: 'MIN' },
-                { y: 22, label: 'FGM' },
-                { y: 17, label: 'FGA' },
-                { y: 4, label: 'FGPCT' },
-                { y: 6, label: 'FG3M' },
-                { y: 9, label: 'FTM' },
-                { y: 2, label: 'FTA'},
-                { y: 4, label: 'FTPCT'},
-                { y: 10, label: 'OREB'},
-                { y: 20, label: 'DREB'},
-                { y: 3, label: 'REB'},
-                { y: 5, label: 'AST'},
-                { y: 19, label: 'STL'},
-                { y: 4, label: 'BLK'},
-                { y: 6, label: 'TO'},
-                { y: 8, label: 'PF'},
-                { y: 12, label: 'PT'},
-                ]
-            },
-            {        
-                type: "stackedColumn",
-                showInLegend: true,
-                name: "Steph Curry",
-                color: "#B6B1A8",
-                dataPoints: [
-                    { y: 45, label: 'GP' },
-                { y: 3, label: 'MIN' },
-                { y: 22, label: 'FGM' },
-                { y: 17, label: 'FGA' },
-                { y: 4, label: 'FGPCT' },
-                { y: 6, label: 'FG3M' },
-                { y: 9, label: 'FTM' },
-                { y: 2, label: 'FTA'},
-                { y: 4, label: 'FTPCT'},
-                { y: 10, label: 'OREB'},
-                { y: 20, label: 'DREB'},
-                { y: 3, label: 'REB'},
-                { y: 5, label: 'AST'},
-                { y: 19, label: 'STL'},
-                { y: 4, label: 'BLK'},
-                { y: 6, label: 'TO'},
-                { y: 8, label: 'PF'},
-                { y: 12, label: 'PT'},
-                ]
-        }]
-    });
-    chart.render();
-    
     //orginal function for data mouse over window
     // function toolTipContent(e) {
     //     var str = "";
@@ -146,8 +70,7 @@ window.onload = function () {
     //     str3 = "<span style = \"color:Tomato\">Total:</span><strong> $"+total+"</strong>bn<br/>";
     //     return (str2.concat(str)).concat(str3);
     // }
-    
-    }
+
 
 //Evans work
 $("#find-player").on("click", function(event) {
@@ -370,7 +293,61 @@ $("#find-player").on("click", function(event) {
 
         
        console.log("newName if/else fail")
+        //UPDATE CHART
+                chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                dataPointWidthMax: 20,
+                dataPointWidthMin: 5,
+                labelWrap: true,
+        
+                title: {
+                    text: "",
+                    fontFamily: "arial black",
+                    fontColor: "#695A42"
+                },
+                axisX: {
+                    labelWrap: true,
+                    labelAutoFit: true,
+                },
+                axisY: {
+                },
+                toolTip: {
+                    shared: true,
+                    content: "{id}<br/>{name}: <strong>{y}</strong>"
+                },
+                data: [{
+                    type: "stackedColumn",
+                    showInLegend: true,
+                    color: "#696661",
+                    name: foundPlayerData.name,
+                    dataPoints: [
+                     
 
+
+                        { y: parseInt(foundPlayerData.games_played), label: 'GP', id:"Games Played" },
+                        { y: parseInt(foundPlayerData.minutes_per_game), label: 'MIN', id:"Minutes"  },
+                        { y: parseInt(foundPlayerData.field_goals_made_per_game), label: 'FGM', id:"Field Goals Made"  },
+                        { y: parseInt(foundPlayerData.field_goals_attempted_per_game), label: 'FGA', id:"Field Goals Attempted" },
+                        { y: parseInt(foundPlayerData.field_goal_percentage), label: 'FGPCT', id:"Field Goal Percentage" },
+                        { y: parseInt(foundPlayerData.three_point_made_per_game), label: 'FG3M', id:'3Pt Field Goal Made' },
+                        { y: parseInt(foundPlayerData.free_throw_percentage), label: 'FT%', id:'Free Throw Percentage' },
+                        { y: parseInt(foundPlayerData.points_per_game), label: 'PPG', id:"Points Per Game" },
+                        { y: parseInt(foundPlayerData.offensive_rebounds_per_game), label: 'OREB', id: "Offensive Rebounds Per Game"},
+                        { y: parseInt(foundPlayerData.defensive_rebounds_per_game), label: 'DREB', id: "Defensive Rebounds Per Game" },
+                        { y: parseInt(foundPlayerData.rebounds_per_game), label: 'REB', id:"Rebounds Per Game" },
+                        { y: parseInt(foundPlayerData.assists_per_game), label: 'AST', id:"Assists" },
+                        { y: parseInt(foundPlayerData.steals_per_game), label: 'STL', id:"Steals" },
+                        { y: parseInt(foundPlayerData.blocks_per_game), label: 'BLK', id:"Blocks" },
+                        { y: parseInt(foundPlayerData.turnovers_per_game), label: 'TO', id:"TurnOvers" },
+                        { y: parseInt(foundPlayerData.player_efficiency_rating), label: 'PER', id:"PLayer Effeciancy Rating" },
+        
+                    ]
+                },
+                
+                
+                ]
+            });
+            chart.render();
 
         }
 
@@ -399,4 +376,3 @@ $("#find-player").on("click", function(event) {
                 });
             });
     });
-  
