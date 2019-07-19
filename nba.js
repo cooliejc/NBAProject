@@ -18,7 +18,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
     },
     toolTip: {
         shared: true,
-        content: "<br/>{name}: <strong>{y}</strong>mn Units"
+        content: "{id}"
     },
     
     data: [{
@@ -28,24 +28,22 @@ var chart = new CanvasJS.Chart("chartContainer", {
         name: '#newName',
         dataPoints: [
             //{"name":"LeBron James","team_acronym":"cle","team_name":"Cleveland Cavaliers","games_played":"46","minutes_per_game":"36:54","field_goals_attempted_per_game":"18.7","field_goals_made_per_game":"10.3","field_goal_percentage":"54.9","free_throw_percentage":"74.5","three_point_attempted_per_game":"4.9","three_point_made_per_game":"1.8","three_point_percentage":"36.2","points_per_game":"26.8","offensive_rebounds_per_game":"1.2","defensive_rebounds_per_game":"6.7","rebounds_per_game":"7.9","assists_per_game":"8.6","steals_per_game":"1.6","blocks_per_game":"1.1","turnovers_per_game":"4.3","player_efficiency_rating":"1.7"}
-            { y: 0, label: 'GP' },
-            { y: 0, label: 'MIN' },
-            { y: 0, label: 'FGM' },
-            { y: 0, label: 'FGA' },
-            { y: 0, label: 'FGPCT' },
-            { y: 0, label: 'FG3M' },
-            { y: 0, label: 'FTM' },
-            { y: 0, label: 'FTA' },
-            { y: 0, label: 'FTPCT' },
-            { y: 0, label: 'OREB' },
-            { y: 0, label: 'DREB' },
-            { y: 0, label: 'REB' },
-            { y: 0, label: 'AST' },
-            { y: 0, label: 'STL' },
-            { y: 0, label: 'BLK' },
-            { y: 0, label: 'TO' },
-            { y: 0, label: 'PF' },
-            { y: 0, label: 'PT' },
+            { y: 0, label: 'GP', id:"Games Played" },
+            { y: 0, label: 'MIN', id:"Minutes"  },
+            { y: 0, label: 'FGM', id:"Field Goals Made"  },
+            { y: 0, label: 'FGA', id:"Field Goals Attempted" },
+            { y: 0, label: 'FGPCT', id:"Field Goal Percentage" },
+            { y: 0, label: 'FG3M', id:'3Pt Field Goal Made' },
+            { y: 0, label: 'FT%', id:'Free Throw Percentage' },
+            { y: 0, label: 'PPG', id:"Points Per Game" },
+            { y: 0, label: 'OREB', id: "Offensive Rebounds Per Game"},
+            { y: 0, label: 'DREB', id: "Defensive Rebounds Per Game" },
+            { y: 0, label: 'REB', id:"Rebounds Per Game" },
+            { y: 0, label: 'AST', id:"Assists" },
+            { y: 0, label: 'STL', id:"Steals" },
+            { y: 0, label: 'BLK', id:"Blocks" },
+            { y: 0, label: 'TO', id:"TurnOvers" },
+            { y: 0, label: 'PER', id:"PLayer Effeciancy Rating" },
 
         ]
     },
@@ -117,34 +115,34 @@ $("#find-player").on("click", function (event) {
                 },
                 toolTip: {
                     shared: true,
-                    content: "<br/>{name}: <strong>{y}</strong>"
+                    content: "{id}<br/>{name}: <strong>{y}</strong>"
                 },
                 data: [{
                     type: "stackedColumn",
                     showInLegend: true,
                     color: "#696661",
-                    name: '#newName',
+                    name: foundPlayerData.name,
                     dataPoints: [
                         //{"name":"LeBron James","team_acronym":"cle","team_name":"Cleveland Cavaliers",1"games_played":"46",2"minutes_per_game":"36:54",3"field_goals_attempted_per_game":"18.7",4"field_goals_made_per_game":"10.3",5"field_goal_percentage":"54.9",6"free_throw_percentage":"74.5",7"three_point_attempted_per_game":"4.9",8"three_point_made_per_game":"1.8","three_point_percentage":"36.2","points_per_game":"26.8","offensive_rebounds_per_game":"1.2","defensive_rebounds_per_game":"6.7","rebounds_per_game":"7.9","assists_per_game":"8.6","steals_per_game":"1.6","blocks_per_game":"1.1","turnovers_per_game":"4.3","player_efficiency_rating":"1.7"}
 
                         //console.log(foundPlayerData.assists_per_game, "assist");
 
-                        { y: parseInt(foundPlayerData.games_played), label: 'GP' },
-                        { y: parseInt(foundPlayerData.minutes_per_game), label: 'MIN' },
-                        { y: parseInt(foundPlayerData.field_goals_made_per_game), label: 'FGM' },
-                        { y: parseInt(foundPlayerData.field_goals_attempted_per_game), label: 'FGA' },
-                        { y: parseInt(foundPlayerData.field_goal_percentage), label: 'FGPCT' },
-                        { y: parseInt(foundPlayerData.three_point_made_per_game), label: 'FG3M' },
-                        { y: parseInt(foundPlayerData.free_throw_percentage), label: 'FT%' },
-                        { y: parseInt(foundPlayerData.points_per_game), label: 'PPG' },
-                        { y: parseInt(foundPlayerData.offensive_rebounds_per_game), label: 'DREB' },
-                        { y: parseInt(foundPlayerData.defensive_rebounds_per_game), label: 'OREB' },
-                        { y: parseInt(foundPlayerData.rebounds_per_game), label: 'REB' },
-                        { y: parseInt(foundPlayerData.assists_per_game), label: 'AST' },
-                        { y: parseInt(foundPlayerData.steals_per_game), label: 'STL' },
-                        { y: parseInt(foundPlayerData.blocks_per_game), label: 'BLK' },
-                        { y: parseInt(foundPlayerData.turnovers_per_game), label: 'TO' },
-                        { y: parseInt(foundPlayerData.player_efficiency_rating), label: 'PT' },
+                        { y: parseInt(foundPlayerData.games_played), label: 'GP', id:"Games Played" },
+                        { y: parseInt(foundPlayerData.minutes_per_game), label: 'MIN', id:"Minutes"  },
+                        { y: parseInt(foundPlayerData.field_goals_made_per_game), label: 'FGM', id:"Field Goals Made"  },
+                        { y: parseInt(foundPlayerData.field_goals_attempted_per_game), label: 'FGA', id:"Field Goals Attempted" },
+                        { y: parseInt(foundPlayerData.field_goal_percentage), label: 'FGPCT', id:"Field Goal Percentage" },
+                        { y: parseInt(foundPlayerData.three_point_made_per_game), label: 'FG3M', id:'3Pt Field Goal Made' },
+                        { y: parseInt(foundPlayerData.free_throw_percentage), label: 'FT%', id:'Free Throw Percentage' },
+                        { y: parseInt(foundPlayerData.points_per_game), label: 'PPG', id:"Points Per Game" },
+                        { y: parseInt(foundPlayerData.offensive_rebounds_per_game), label: 'OREB', id: "Offensive Rebounds Per Game"},
+                        { y: parseInt(foundPlayerData.defensive_rebounds_per_game), label: 'DREB', id: "Defensive Rebounds Per Game" },
+                        { y: parseInt(foundPlayerData.rebounds_per_game), label: 'REB', id:"Rebounds Per Game" },
+                        { y: parseInt(foundPlayerData.assists_per_game), label: 'AST', id:"Assists" },
+                        { y: parseInt(foundPlayerData.steals_per_game), label: 'STL', id:"Steals" },
+                        { y: parseInt(foundPlayerData.blocks_per_game), label: 'BLK', id:"Blocks" },
+                        { y: parseInt(foundPlayerData.turnovers_per_game), label: 'TO', id:"TurnOvers" },
+                        { y: parseInt(foundPlayerData.player_efficiency_rating), label: 'PER', id:"PLayer Effeciancy Rating" },
         
                     ]
                 },
