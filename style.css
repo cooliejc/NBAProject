@@ -1,6 +1,6 @@
 body {
     margin: auto;
-    width: 1130px;
+    width: 1180px;
 }
 
 .jumbotron {
@@ -14,26 +14,51 @@ body {
     margin: 0px 0px 32px;
 }
 
+#buttonArea {
+    background-color: #e9ecef;
+    border-radius: .3rem;
+    padding: 4px;
+    margin: 0px 0px 32px;
+}
+
 .playerImage {
-    height: 176px;
+    height: 174px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 32px;
     background-color: #333;
 }
 
 .panel-table {
     background-color: #e9ecef;
-    height: 208px;
+    height: 174px;
     border-radius: .3rem;
-    padding-left: 16px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    margin: 0px 0px 32px;
+    padding: 4px;
+    margin: 0px 0px 32px 50px;
 }
 
-table, th, td {
-    border: 1px solid black;
+th, td {
+    border-right: 1px solid gray;
+    text-align: center;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.finalEntry {
+    border-right: none;
+}
+
+.btn-light {
+    margin-right: 4px;
+}
+
+.playerInfo {
+    margin-left: 15px;
 }
 
 #nba {
@@ -57,8 +82,7 @@ table, th, td {
     stroke: rgb(155, 33, 33);
 }
 
-.focus circle {
+.focus .circle {
   fill: none;
   stroke: rgb(255, 11, 202);
 }
-​

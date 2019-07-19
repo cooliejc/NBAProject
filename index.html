@@ -23,19 +23,30 @@
     </div>
 </div>
 
-<label for="player-input">Search</label>
-
-<input type="text" id="player-input"><br>
-
-<button id="find-player" value="Player Search">Button Page</button>
-
-<div id="buttonArea"></div>
+<div class="row">
+    <div class="col">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button  id="find-player" class="btn btn-outline-secondary" type="button" id="button-addon1">Player Search</button>
+            </div>
+            <input id="player-input" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+        </div>
+    </div>
+</div>
 
 <div class="row">
-    <div id="imageColumn" class="col-3">
+    <div class="col">
+        <div id="buttonArea">
+            <!-- <a href="#" class="badge badge-light">Light</a> -->
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div id="imageColumn" class="col-2">
         <div id="player-view"></div>
     </div>
-    <div id="statColumn" class="col-9">
+    <div id="statColumn" class="col-10">
         <div id="player-view"></div>
     </div>
 </div>
@@ -44,14 +55,14 @@
 <div class="row">
     <div class="col">
         <div id="table" class="panel">
-                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col panel">
-        <div id="news-section"></div>
+    <div class="col">
+        <div class="panel" id="news-section"></div>
     </div>
 </div>
 
